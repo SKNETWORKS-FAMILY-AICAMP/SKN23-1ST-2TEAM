@@ -115,3 +115,20 @@ DROP COLUMN category;
 
 ALTER TABLE faq_data
 MODIFY COLUMN id int not null FIRST;
+
+ALTER TABLE faq_data
+MODIFY COLUMN content text AFTER question_text;
+
+ALTER TABLE faq_data
+ADD COLUMN major_category VARCHAR(100),
+ADD COLUMN minor_category VARCHAR(100);
+
+UPDATE faq_data
+SET major_category = TRIM(SUBSTRING_INDEX(category, '>', 1)),
+    minor_category = TRIM(SUBSTRING_INDEX(category, '>', -1));
+
+ALTER TABLE faq_data
+DROP COLUMN category;
+
+ALTER TABLE faq_data
+MODIFY COLUMN id int not null FIRST;
