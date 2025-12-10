@@ -4,6 +4,10 @@ from mysql.connector import Error
 from dotenv import load_dotenv
 import os
 import pandas as pd
+# 하늘색 #e6f0ff
+# 연두색 #d9f7f5
+# 보라색 #f2ecff
+
 
 st.set_page_config(layout="wide")   # 화면 넓게
 
@@ -112,9 +116,97 @@ if menu == "main":
             st.dataframe(filtered_df, hide_index=True)
 
 # 정비소
+
 elif menu == "정비소":
     st.subheader("정비소 페이지")
-    st.info("정비소 데이터를 여기에 작성하세요.")
+    # st.info("정비소 데이터를 여기에 작성하세요.")
+
+    # --- SQL 데이터 조회 ---    
+    conn = create_connection()
+    if conn:
+        query = """
+            SELECT s.name, s.location, s.company_name,
+                   r.region AS region_name,
+                   c.city_name AS city_name, 
+                   s.tel, s.category
+            FROM repair_shop s
+            LEFT JOIN region r ON s.region_code = r.region_code
+            LEFT JOIN city c ON s.city_code = c.city_code;
+        """
+        df = pd.read_sql(query, conn)
+        conn.close()
+
+    # 검색 UI
+    col1, col2, col3 = st.columns([2, 2, 2])
+
+    region_list = ["선택"] + sorted(region_df['region'].tolist())
+    selected_region = col1.selectbox("도시", region_list)
+
+    company_list = ["선택"] + sorted(df['company_name'].unique().tolist()) 
+    selected_company = col3.selectbox("회사", company_list)
+
+
+    # 선택한 region → city 목록
+
+    if selected_region == "선택":
+        city_list = ["시/군/구"]
+    else:
+        region_code = region_df.loc[
+            region_df['region'] == selected_region, 'region_code'
+        ].values[0]
+
+        filtered_city_df = city_df[city_df['region_code'] == region_code]
+        city_list = ["시/군/구"] + sorted(filtered_city_df['city_name'].tolist())
+
+    selected_city = col2.selectbox("시/군/구", city_list)
+
+    # 조건 만족 여부 확인
+
+    if selected_region == "선택":
+        st.warning("⚠ 도시(Region)를 먼저 선택하세요.")
+    elif selected_city == "시/군/구":
+        st.warning("⚠ 시/군/구를 선택하세요.")
+    else:
+        # 필터링
+
+        filtered_df = df.copy()
+
+        # 지역 필터링
+        filtered_df = filtered_df[
+            (filtered_df['region_name'] == selected_region) &
+            (filtered_df['city_name'] == selected_city)
+        ]
+
+        # 회사명 필터링
+        if selected_company != "선택":
+            filtered_df = filtered_df[filtered_df['company_name'] == selected_company]
+        
+        # region_name, city_name 제거
+
+        filtered_df = filtered_df.drop(columns=["region_name", "city_name"])
+
+        # 컬럼명 한글로 변경
+
+        filtered_df = filtered_df.rename(columns={
+            "name": "정비소명",
+            "location": "주소",
+            "tel": "전화번호",
+            "category": "카테고리",
+            "company_name" : '회사'
+        })
+
+        # 결과 출력
+
+        st.subheader("정비소 검색 결과")
+
+        # 정비소가 없을 경우
+        if filtered_df.empty:
+            st.warning(f"'{selected_city}' 지역에 정비소가 없습니다.")
+        else:
+            st.dataframe(filtered_df, hide_index=True)
+
+# ================================================================================
+
 
 elif menu == "FAQ":
     st.header("FAQ")
@@ -132,9 +224,9 @@ elif menu == "FAQ":
         <style>
         /* 테마? */
         .st-bd{
-            color: #fff;
-            border-color: #002c5f;
-            background-color: #002c5f;
+            color: #000;
+            border-color: #e6f0ff;
+            background-color: #e6f0ff;
             cursor: pointer;
             transition: all .5s;
         }
@@ -142,18 +234,16 @@ elif menu == "FAQ":
             transform: scale(1.01);
         }
         .st-bo{
-            color: #fff;        
+            color: #000;        
         }
         .st-bo.st-b8{
              color: #000;   
         }
-        li.st-bo{
-            color: #002c5f;
-        }
+        
                 
         /* 아코디언 스타일 */
         .st-expander {
-            background-color: #002c5f !important;
+            background-color: #e6f0ff !important;
             border-radius: 10px !important;
             margin-bottom: 12px !important;
             border: none !important;
@@ -186,7 +276,7 @@ elif menu == "FAQ":
             border-radius: 6px;
             cursor: pointer;
             font-size: 13px;
-            color: #002c5f;
+            color: #e6f0ff;
             transition: all .5s;
         }
 
@@ -197,15 +287,15 @@ elif menu == "FAQ":
         }
 
         .pagination-btn.active {
-            background-color: #002c5f;
+            background-color: #e6f0ff;
             color: white;
-            border-color: #002c5f;
+            border-color: #e6f0ff;
         }
 
         div.stButton > button {
             background-color: white;
-            border: 1px solid #002c5f;
-            color: #002c5f !important;
+            border: 1px solid #e6f0ff;
+            color: #e6f0ff !important;
             padding: 0px !important;
             border-radius: 6px !important;
             font-size: 13px !important;
@@ -256,56 +346,56 @@ elif menu == "FAQ":
             transition: all .5s;
         }
         .st-emotion-cache-pxambx:hover{
-            color: #fff;
-            background-color: #002c5f;
+            color: #000;
+            background-color: #e6f0ff;
         }
         .st-emotion-cache-1lsfsc6, .st-emotion-cache-1lsfsc6{
             transition: all .5s;
         }
         .st-emotion-cache-1lsfsc6, .st-emotion-cache-1lsfsc6:hover{
-            background-color: #002c5f;
-            color: #fff;
+            background-color: #e6f0ff;
+            color: #000;
             transition: all .5s;
         }
                 
         ul[role="listbox"], ul[role="listbox"] > *, ul[role="listbox"] > * > *{
-            background-color: #002c5f;
-            color: #fff;
+            background-color: #e6f0ff;
+            color: #000;
                 transition: all .5s;
         }
                 
         
                 
         ul[role="listbox"] > * > *:hover{
-            background-color: #fff;
-                color: #002c5f;
+            background-color: #000;
+                color: #e6f0ff;
                 transition: all .5s;
         }
         
         ul[role="listbox"] > * > *:hover > span{
-            color: #002c5f;
+            color: #e6f0ff;
         }
         div[data-testid="stMainMenuDivider"]{
-            background-color: #fff;
+            background-color: #000;
         }
                 
         div[data-testid="stSidebarContent"]{
-            background-color: #002c5f;
+            background-color: #e6f0ff;
         }
         div[data-testid="stSidebarContent"] .st-b8{
-            color: #fff;
+            color: #000;
         }
                 
         label[data-testid="stWidgetLabel"]{
-            color: #fff;
+            color: #000;
         }
                 
         .st-fa{
-            border-color: #fff;
+            border-color: #000;
         }
                 
         .st-emotion-cache-pd6qx2{
-            color: #fff;
+            color: #000;
         }
 
         </style>
