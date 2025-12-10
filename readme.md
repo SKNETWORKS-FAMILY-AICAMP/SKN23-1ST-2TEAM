@@ -53,7 +53,7 @@
 
 
 ## 4. 📈 데이터베이스(ERD)
- ![alt text](/ERD.png)
+ ![alt text](./images/erd.png)
 
 
 ## 5. 🖥️ 결과 화면
