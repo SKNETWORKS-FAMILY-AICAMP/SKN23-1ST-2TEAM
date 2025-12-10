@@ -8,12 +8,11 @@ import os
 import pandas as pd
 import streamlit.components.v1 as components
 import json
-
-# AgGrid imports
 from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
-# -------------------------------
+
+
 # 1) 환경변수 로드
-# -------------------------------
+
 load_dotenv()
 PASSWORD = os.getenv('PASSWORD')
 DB_HOST = os.getenv('DB_HOST', 'localhost')
@@ -21,11 +20,11 @@ DB_USER = os.getenv('DB_USER', 'root')
 DB_NAME = os.getenv('DB_NAME', 'sknteam2')
 KAKAO_API_KEY = os.getenv("KAKAO_MAP_API_KEY")
 
-st.set_page_config(layout="wide", page_title="충전소 지도 (AgGrid 통합)")
+st.set_page_config(layout="wide", page_title="충전소 지도")
 
-# -------------------------------
+
 # 2) DB 연결 함수
-# -------------------------------
+
 def create_connection():
     try:
         conn = mysql.connector.connect(
@@ -40,9 +39,9 @@ def create_connection():
         st.error(f"DB 연결 오류: {e}")
         return None
 
-# -------------------------------
+
 # 3) 지역/도시 캐싱 로드
-# -------------------------------
+
 @st.cache_data
 def load_regions_and_cities():
     conn = create_connection()
@@ -56,9 +55,8 @@ def load_regions_and_cities():
 region_df, city_df = load_regions_and_cities()
 
 # 5) MAIN 화면
-# ===============================
 # CSS 스타일
-# ===============================
+
 st.markdown("""
     <style>
       *:hover{
@@ -87,14 +85,26 @@ LEFT JOIN city c ON s.city_code = c.city_code
 df = pd.read_sql(query, conn)
 conn.close()
 
-# -------------------------------
+
 # 검색 UI
-# -------------------------------
+
 col1, col2, col3 = st.columns([2, 2, 4])
 address = col3.text_input("충전소 이름/주소 검색 (선택)")
 
-region_list = ["선택"] + sorted(region_df['region'].tolist())
-selected_region = col1.selectbox("도시 선택", region_list)
+# 사용자 정의 순서
+region_order = [
+    "서울", "대전", "대구", "광주", "부산", "울산",
+    "경기도", "강원도", "경상남도", "경상북도",
+    "전라남도", "전라북도", "충청남도", "충청북도",
+    "세종", "제주"
+]
+
+# DB에 있는 데이터와 비교해서 존재하는 것만 필터
+region_list_from_db = region_df['region'].tolist()
+region_list_ordered = ["선택"] + [r for r in region_order if r in region_list_from_db]
+
+selected_region = col1.selectbox("지역 선택", region_list_ordered)
+
 
 if selected_region == "선택":
     city_list = ["시/군/구"]
@@ -105,9 +115,9 @@ else:
 
 selected_city = col2.selectbox("시/군/구 선택", city_list)
 
-# -------------------------------
+
 # 필터 적용
-# -------------------------------
+
 filtered_df = df.copy()
 
 if selected_region != "선택" and selected_city != "시/군/구":
@@ -125,9 +135,9 @@ if selected_region != "선택" and selected_city != "시/군/구":
 else:
     filtered_df = pd.DataFrame(columns=df.columns)
 
-# -------------------------------
+
 # AgGrid 설정
-# -------------------------------
+
 st.subheader("충전소 목록")
 
 selected_row = None
@@ -180,9 +190,9 @@ if not filtered_df.empty:
 else:
     st.info("검색 조건을 선택하세요.")
 
-# -------------------------------
+
 # 지도 마커 및 Kakao 길찾기 URL 생성
-# -------------------------------
+
 if isinstance(selected_row, dict) and selected_row:
     coords = [selected_row]
     mode = "single"
@@ -196,9 +206,9 @@ else:
 
 coords_json = json.dumps(coords, ensure_ascii=False)
 
-  # -------------------------------
+  
   # Kakao Map HTML/JS
-  # -------------------------------
+  
 html_code = f"""
   <!DOCTYPE html>
   <html>
