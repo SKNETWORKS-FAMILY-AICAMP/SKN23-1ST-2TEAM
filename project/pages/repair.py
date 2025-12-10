@@ -1,3 +1,5 @@
+from utils.load_css import load_css
+load_css("styles/repair.css")
 import streamlit as st
 import mysql.connector
 from mysql.connector import Error
@@ -41,7 +43,7 @@ def load_regions_and_cities():
 
 region_df, city_df = load_regions_and_cities()
 
-st.subheader("정비소 페이지")
+st.title("정비소 페이지")
 # st.info("정비소 데이터를 여기에 작성하세요.")
 
 # --- SQL 데이터 조회 ---    

@@ -1,0 +1,199 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap');
+
+.stApp,
+.st-emotion-cache-3uj0rx h1,
+.st-emotion-cache-3uj0rx h2,
+.st-emotion-cache-3uj0rx h3,
+.st-emotion-cache-3uj0rx h4,
+.st-emotion-cache-3uj0rx h5,
+.st-emotion-cache-3uj0rx h6{
+    font-family: "Science Gothic", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
+}
+*:hover{
+    transition: all .5s;
+}
+.st-emotion-cache-py5knn,
+.st-emotion-cache-n78cyx,
+.st-emotion-cache-19tkche{
+    font-size: 1.5rem;
+}
+
+/* 테마? */
+.st-bb,
+.st-bv,
+.st-bw{
+    background-color: #e6f0ff;
+    cursor: pointer;
+    transition: all .5s;
+}
+.stAppToolbar{
+    background-color: #e6f0ff;
+}
+.st-bb:hover{
+    transform: scale(1.01);
+}
+.st-emotion-cache-1s7cx2h{
+    background-color: #e6f0ff;
+}
+li[role="option"]:hover{
+    background-color: #e6f0ff;        
+}
+
+        
+/* 아코디언 스타일 */
+.st-expander {
+    background-color: #e6f0ff;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border: none;
+}
+.st-expander summary {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    padding: 16px;
+}
+.st-expander p {
+    color: #e6e6e6;
+    padding: 10px;
+    font-size: 15px;
+}
+
+/* 페이지네이션 wrapper */
+.pagination-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+/* 페이지 버튼 */
+.pagination-btn {
+    padding: 7px 12px;
+    background-color: white;
+    border: 1px solid #cdd6e1;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #e6f0ff;
+    transition: all .5s;
+}
+
+.pagination-btn:hover {
+    background-color: #e6eef8;
+    border-color: #8fb3e2;
+    transition: all .5s;
+}
+
+.pagination-btn.active {
+    background-color: #8fb3e2;
+    color: white;
+    border-color: #8fb3e2;
+}
+
+div.stButton > button {
+    border: 1px solid #333;
+    color: #333;
+    padding: 0px;
+    border-radius: 6px;
+    font-size: 13px;
+    min-height: 28px;
+}
+
+div.stButton > button:hover {
+    background-color: #e6eef8;
+    border-color: #8fb3e2;
+}
+.st-emotion-cache-1permvm:has(.st-emotion-cache-10yr2a7){
+    justify-content: center;        
+}
+        
+.st-emotion-cache-10yr2a7{
+    width: 28px;
+    flex: 0 28px;        
+}
+        
+.st-emotion-cache-wfksaw{
+    justify-content: center;
+    align-items: center;
+}
+
+.st-emotion-cache-zh2fnc{
+    width: 100%;
+}
+
+/* disabled 버튼 스타일 */
+div.stButton > button[disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+        
+.st-emotion-cache-3uj0rx{
+    margin-bottom: 0;
+}
+        
+.pagination-btn.active{
+        font-size: inherit;
+        padding: 0;
+        text-align: center;
+}
+*:hover{
+    transition: all .5s;
+}
+.st-emotion-cache-pxambx{
+    transition: all .5s;
+}
+.st-emotion-cache-pxambx:hover{
+    color: #000;
+    background-color: #e6f0ff;
+}
+.st-emotion-cache-1lsfsc6, .st-emotion-cache-1lsfsc6{
+    transition: all .5s;
+}
+.st-emotion-cache-1lsfsc6, .st-emotion-cache-1lsfsc6:hover{
+    background-color: #e6f0ff;
+    color: #000;
+    transition: all .5s;
+}
+        
+ul[role="listbox"], ul[role="listbox"] > *, ul[role="listbox"] > * > *{
+    background-color: #e6f0ff;
+    color: #000;
+        transition: all .5s;
+}
+        
+
+        
+ul[role="listbox"] > * > *:hover{
+    background-color: #000;
+        color: #e6f0ff;
+        transition: all .5s;
+}
+
+ul[role="listbox"] > * > *:hover > span{
+    color: #e6f0ff;
+}
+div[data-testid="stMainMenuDivider"]{
+    background-color: #000;
+}
+        
+div[data-testid="stSidebarContent"]{
+    background-color: #e6f0ff;
+    box-shadow: 8px 8px 40px rgba(0,0,0,0.12);
+}
+div[data-testid="stSidebarContent"] .st-b8{
+    color: #000;
+}
+        
+label[data-testid="stWidgetLabel"]{
+    color: #000;
+}
+        
+.st-fa{
+    border-color: #000;
+}
+        
+.st-emotion-cache-pd6qx2{
+    color: #000;
+}

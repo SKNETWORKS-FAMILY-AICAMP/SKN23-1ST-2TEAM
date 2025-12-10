@@ -1,0 +1,54 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap');
+
+.stApp,
+.st-emotion-cache-3uj0rx h1,
+.st-emotion-cache-3uj0rx h2,
+.st-emotion-cache-3uj0rx h3,
+.st-emotion-cache-3uj0rx h4,
+.st-emotion-cache-3uj0rx h5,
+.st-emotion-cache-3uj0rx h6{
+    font-family: "Science Gothic", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
+}
+*:hover{
+    transition: all .5s;
+}
+.st-emotion-cache-n78cyx,
+.st-emotion-cache-de5ihx,
+.st-emotion-cache-11fbum0{
+    font-size: 1.5rem;
+}
+
+div[data-testid="stSidebarContent"]{
+    background-color: #f2ecff;
+    box-shadow: 12px 12px 40px rgba(0,0,0,0.16);
+}
+.stAppToolbar{
+    background-color: #f2ecff;
+}
+div[data-testid="stSidebarContent"] .st-b8{
+    color: #000;
+}
+
+.st-emotion-cache-1cm4s2j{
+    background-color: #a79ac6;
+}
+
+.st-emotion-cache-1cm4s2j:hover,
+.st-emotion-cache-yqders:hover{
+    background-color: #bcaedc;
+}
+
+.st-bv, 
+.st-emotion-cache-1s7cx2h,
+.st-emotion-cache-589yx1:hover, 
+.st-emotion-cache-589yx1:active, 
+.st-emotion-cache-589yx1:focus-visible,
+.st-emotion-cache-1s7cx2h:hover{
+    background-color: #f2ecff;
+}
+
+.st-at{
+    background-color: #f2ecff;
+    color: #000;
+}

@@ -1,3 +1,5 @@
+from utils.load_css import load_css
+load_css("styles/main.css")
 import streamlit as st
 import mysql.connector
 from mysql.connector import Error
@@ -9,7 +11,6 @@ import json
 
 # AgGrid imports
 from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
-
 # -------------------------------
 # 1) 환경변수 로드
 # -------------------------------
@@ -55,6 +56,17 @@ def load_regions_and_cities():
 region_df, city_df = load_regions_and_cities()
 
 # 5) MAIN 화면
+# ===============================
+# CSS 스타일
+# ===============================
+st.markdown("""
+    <style>
+      *:hover{
+        transition: all .5s;
+      }
+
+    </style>
+""", unsafe_allow_html=True)
 
 st.title("최강 2팀 충전소 지도")
 
@@ -204,8 +216,26 @@ html_code = f"""
         font-size:14px;
       }}
       #kakao-link {{
+        display: flex;
+        justify-content: flex-end;
         margin-top:10px;
       }}
+      .btn_link{{
+          display: inline-flex;
+          flex-direction: row;
+          -webkit-box-align: center;
+          align-items: center;
+          gap: 0.5rem;
+          text-decoration: none;
+          border-radius: 0.5rem;
+          padding-left: 0.5rem;
+          background-color: #99e3de;
+          padding-right: 0.5rem;
+          margin-top: 0.125rem;
+          margin-bottom: 0.125rem;
+          line-height: 2;
+          color: rgb(49, 51, 63);
+          }}
     </style>
   </head>
   <body>
@@ -277,7 +307,7 @@ html_code = f"""
                 var kakaoUrl = "https://map.kakao.com/link/by/car/"
                     + "내위치," + myLat + "," + myLon + "/"
                     + c.station_name + "," + c.lat + "," + c.lon;
-                kakaoLinkDiv.innerHTML = '<a href="' + kakaoUrl + '" target="_blank" style="font-size:16px;"> 카카오 길찾기 열기</a>';
+                kakaoLinkDiv.innerHTML = '<a href="' + kakaoUrl + '" target="_blank" class="btn_link"> 카카오 길찾기 열기</a>';
 
               }}, function() {{
                 var c = serverCoords[0];
