@@ -135,6 +135,11 @@ elif menu == "FAQ":
             color: #fff;
             border-color: #002c5f;
             background-color: #002c5f;
+            cursor: pointer;
+            transition: all .5s;
+        }
+        .st-bd:hover{
+            transform: scale(1.01);
         }
         .st-bo{
             color: #fff;        
@@ -182,12 +187,13 @@ elif menu == "FAQ":
             cursor: pointer;
             font-size: 13px;
             color: #002c5f;
-            transition: 0.2s;
+            transition: all .5s;
         }
 
         .pagination-btn:hover {
             background-color: #e6eef8;
             border-color: #8fb3e2;
+            transition: all .5s;
         }
 
         .pagination-btn.active {
@@ -203,7 +209,6 @@ elif menu == "FAQ":
             padding: 0px !important;
             border-radius: 6px !important;
             font-size: 13px !important;
-            transition: 0.2s !important;
             min-height: 28px;
         }
 
@@ -247,14 +252,59 @@ elif menu == "FAQ":
         *:hover{
             transition: all .5s;
         }
+        .st-emotion-cache-pxambx{
+            transition: all .5s;
+        }
         .st-emotion-cache-pxambx:hover{
-                color: #fff;
+            color: #fff;
             background-color: #002c5f;
+        }
+        .st-emotion-cache-1lsfsc6, .st-emotion-cache-1lsfsc6{
+            transition: all .5s;
+        }
+        .st-emotion-cache-1lsfsc6, .st-emotion-cache-1lsfsc6:hover{
+            background-color: #002c5f;
+            color: #fff;
+            transition: all .5s;
+        }
+                
+        ul[role="listbox"], ul[role="listbox"] > *, ul[role="listbox"] > * > *{
+            background-color: #002c5f;
+            color: #fff;
+                transition: all .5s;
+        }
+                
+        
+                
+        ul[role="listbox"] > * > *:hover{
+            background-color: #fff;
+                color: #002c5f;
                 transition: all .5s;
         }
         
-        .st-emotion-cache-1lsfsc6, .st-emotion-cache-1lsfsc6:hover{
+        ul[role="listbox"] > * > *:hover > span{
+            color: #002c5f;
+        }
+        div[data-testid="stMainMenuDivider"]{
+            background-color: #fff;
+        }
+                
+        div[data-testid="stSidebarContent"]{
             background-color: #002c5f;
+        }
+        div[data-testid="stSidebarContent"] .st-b8{
+            color: #fff;
+        }
+                
+        label[data-testid="stWidgetLabel"]{
+            color: #fff;
+        }
+                
+        .st-fa{
+            border-color: #fff;
+        }
+                
+        .st-emotion-cache-pd6qx2{
             color: #fff;
         }
 
