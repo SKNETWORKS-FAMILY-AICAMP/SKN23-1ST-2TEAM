@@ -1,3 +1,9 @@
+# 이브이팀
+![alt text](./images/team.jpg)
+
+- 팀명의 의미
+    - EV + 2팀 + (포켓몬 이브이)
+
 # ⚡지역별 EV 충전소 & 정비소 & FAQ 통합 서비스⚡
 ![메인이미지](./images/main_img.png)
 
