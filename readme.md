@@ -107,10 +107,7 @@
 **🔗[지역별 전기차 현황정보](https://www.data.go.kr/data/15039554/fileData.do)**
 
 ## 3. 🛠️ Tech Stack
-<details>
-    <summary>펼치기 / 접기</summary>
-    <img src="./images/stack.png" width="40%"/>
-</details>
+<img src="./images/stack.png" width="40%"/>
 
 🔧 Backend : 
 `Python(3.13.5)`
