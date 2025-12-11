@@ -129,10 +129,9 @@
 `CSS`
 
 🧰 Tools :
-`Co-Work Tools`
+`Discord`
 `Git / GitHub`
 `Notion`
-`Discord`
 
 ### ✨ 버전관리
 
