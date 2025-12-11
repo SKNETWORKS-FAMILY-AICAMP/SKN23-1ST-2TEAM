@@ -129,7 +129,7 @@
 `CSS`
 
 🧰 Tools :
-`Discord`
+`Discord` 
 `Git / GitHub`
 `Notion`
 
