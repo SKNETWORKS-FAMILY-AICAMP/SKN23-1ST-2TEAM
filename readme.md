@@ -1,5 +1,5 @@
 # 이브이팀
-![alt text](./images/team.jpg)
+<img src="./images/team.jpg" width="40%"/>
 
 - 팀명의 의미
     - EV + 2팀 + (포켓몬 이브이)
@@ -109,7 +109,7 @@
 ## 3. 🛠️ Tech Stack
 <details>
     <summary>펼치기 / 접기</summary>
-    <img src="./images/stack.png" alt="기술스택 이미지">
+    <img src="./images/stack.png" width="40%"/>
 </details>
 
 🔧 Backend : 
