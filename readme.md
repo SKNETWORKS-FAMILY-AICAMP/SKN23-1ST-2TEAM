@@ -113,6 +113,8 @@
 `Git / GitHub`
 `Notion`
 
+### ✨ 버전관리
+![깃허브 커밋목록](./images/commit.png)
 ## 4. 📈 데이터베이스(ERD)
 
  ![alt text](./images/erd.png)
